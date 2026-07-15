@@ -6,1882 +6,290 @@
 <title>ASSET SOVEREIGN™ — Savills × PATRIZIA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════════
-   TOKENS
-═══════════════════════════════════════════════════ */
-:root {
-  --navy:    #0B1D3A;
-  --blue:    #1B3A6B;
-  --mid:     #1E3A5F;
-  --deep:    #0F172A;
-  --gold:    #F59E0B;
-  --gold2:   #D97706;
-  --white:   #FFFFFF;
-  --off:     #F8FAFC;
-  --slate:   #475569;
-  --muted:   #64748B;
-  --light:   #E2E8F0;
-  --green:   #10B981;
-  --red:     #EF4444;
-  --amber:   #F59E0B;
-  --teal:    #06B6D4;
-  --purple:  #8B5CF6;
-  --gold-wash: rgba(245,158,11,0.06);
-  --gold-glow: rgba(245,158,11,0.15);
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#FAFAF8;color:#111;font-family:'Inter',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body:    'Inter', sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
+/* NAV */
+.ad-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 52px;border-bottom:1px solid #E2E2DE;position:sticky;top:0;background:#FAFAF8;z-index:100}
+.nav-wm{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;letter-spacing:.14em;color:#111}
+.nav-r{display:flex;align-items:center;gap:36px}
+.nav-i{font-size:10px;font-weight:400;letter-spacing:.1em;color:#999;cursor:pointer;text-transform:uppercase;transition:color .2s;text-decoration:none}
+.nav-i:hover{color:#111}
+.nav-btn{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#111;border:none;background:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:8px;transition:gap .25s}
+.nav-btn:hover{gap:13px}
 
-  --nav-w: 72px;
-  --ease: cubic-bezier(0.16,1,0.3,1);
-}
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #E2E2DE;min-height:580px}
+.hero-l{padding:64px 52px;border-right:1px solid #E2E2DE;display:flex;flex-direction:column;justify-content:space-between}
+.hero-tag{font-size:10px;font-weight:400;letter-spacing:.18em;color:#bbb;text-transform:uppercase;margin-bottom:52px;display:flex;align-items:center;gap:14px}
+.hero-tag::before{content:'';display:block;width:24px;height:1px;background:#ddd}
+h1.headline{font-family:'Cormorant Garamond',serif;font-size:clamp(60px,7.5vw,100px);font-weight:300;line-height:.96;letter-spacing:-.025em;color:#111;margin:0}
+h1.headline em{font-style:italic;font-weight:300;color:#777}
+.hero-sub{font-size:14px;font-weight:300;line-height:1.78;color:#777;max-width:420px;margin-top:32px}
+.hero-ctas{display:flex;align-items:center;gap:36px;margin-top:44px}
+.cta-p{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#FAFAF8;background:#111;border:none;padding:13px 28px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:background .2s;text-decoration:none}
+.cta-p:hover{background:#333}
+.cta-g{font-size:10px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:#999;background:none;border:none;cursor:pointer;padding:0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;text-decoration:none}
+.cta-g:hover{color:#111;border-bottom-color:#111}
 
-/* ═══════════════════════════════════════════════════
-   RESET + BASE
-═══════════════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body {
-  font-family: var(--font-body);
-  background: var(--deep);
-  color: var(--white);
-  cursor: none;
-  overflow-x: hidden;
-}
+.hero-r{display:grid;grid-template-rows:1fr auto;overflow:hidden}
+.hero-img-main{position:relative;overflow:hidden;min-height:420px}
+.hero-img-main img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .9s ease}
+.hero-img-main:hover img{transform:scale(1.03)}
+.img-caption{position:absolute;bottom:16px;left:20px;right:20px;font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
-/* ═══════════════════════════════════════════════════
-   CUSTOM CURSOR
-═══════════════════════════════════════════════════ */
-#cursor {
-  position: fixed; top: 0; left: 0;
-  width: 10px; height: 10px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.1s, width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s;
-  mix-blend-mode: normal;
-}
-#cursor-ring {
-  position: fixed; top: 0; left: 0;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(245,158,11,0.4);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform 0.18s var(--ease), width 0.35s var(--ease), height 0.35s var(--ease), border-color 0.3s;
-}
-body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 6px; height: 6px; }
-body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring {
-  width: 54px; height: 54px; border-color: var(--gold);
-}
+/* METRICS */
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #E2E2DE}
+.met{padding:18px 20px;border-right:1px solid #E2E2DE;transition:background .2s;cursor:default}
+.met:last-child{border-right:none}
+.met:hover{background:#F3F3EF}
+.mv{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:-.01em;color:#111;line-height:1}
+.ml{font-size:9px;font-weight:400;letter-spacing:.1em;color:#bbb;text-transform:uppercase;margin-top:4px}
 
-/* ═══════════════════════════════════════════════════
-   VERTICAL NAV
-═══════════════════════════════════════════════════ */
-#sidenav {
-  position: fixed; left: 0; top: 0;
-  width: var(--nav-w); height: 100vh;
-  background: rgba(11,29,58,0.95);
-  backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(245,158,11,0.1);
-  display: flex; flex-direction: column;
-  align-items: center;
-  padding: 28px 0;
-  z-index: 100;
-}
-.nav-logo {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  font-family: var(--font-display);
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--gold);
-  margin-bottom: auto;
-  white-space: nowrap;
-}
-.nav-links {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 6px;
-  margin-bottom: auto;
-}
-.nav-dot {
-  position: relative;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: transparent;
-  cursor: none;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.3s, background 0.3s;
-}
-.nav-dot::before {
-  content: '';
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--muted);
-  transition: background 0.3s, transform 0.3s;
-}
-.nav-dot:hover, .nav-dot.active {
-  border-color: var(--gold);
-  background: var(--gold-wash);
-}
-.nav-dot:hover::before, .nav-dot.active::before {
-  background: var(--gold);
-  transform: scale(1.4);
-}
-.nav-tooltip {
-  position: absolute; left: 48px; top: 50%;
-  transform: translateY(-50%);
-  background: var(--navy);
-  border: 1px solid rgba(245,158,11,0.2);
-  color: var(--white);
-  font-family: var(--font-body);
-  font-size: 11px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  white-space: nowrap;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.2s;
-}
-.nav-dot:hover .nav-tooltip { opacity: 1; }
-.nav-line {
-  width: 1px; height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(245,158,11,0.3), transparent);
-}
+/* STRIP 3 FOTOS */
+.strip-3{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #E2E2DE}
+.strip-img{overflow:hidden;position:relative;aspect-ratio:4/3;border-right:1px solid #E2E2DE}
+.strip-img:last-child{border-right:none}
+.strip-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}
+.strip-img:hover img{transform:scale(1.04)}
+.strip-label{position:absolute;bottom:12px;left:14px;font-size:9px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 
-/* ═══════════════════════════════════════════════════
-   SPINE — the signature gold line
-═══════════════════════════════════════════════════ */
-#spine {
-  position: fixed; left: var(--nav-w); top: 0;
-  width: 2px; height: 100vh;
-  background: linear-gradient(to bottom,
-    transparent 0%,
-    var(--gold) var(--spine-pct,0%),
-    rgba(245,158,11,0.1) 100%);
-  z-index: 99;
-  pointer-events: none;
-  transition: --spine-pct 0.1s;
-}
+/* MANIFESTO */
+.manifesto{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid #E2E2DE}
+.mf-idx{padding:72px 0 72px 52px;border-right:1px solid #E2E2DE}
+.mf-num{font-size:10px;font-weight:400;letter-spacing:.16em;color:#ccc;text-transform:uppercase}
+.mf-body{padding:72px 52px}
+.mf-eyebrow{font-size:10px;font-weight:400;letter-spacing:.16em;color:#bbb;text-transform:uppercase;margin-bottom:32px}
+h2.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;line-height:1.07;letter-spacing:-.015em;color:#111;margin:0 0 44px}
+h2.sec-title em{font-style:italic;color:#999}
+.pq{border-top:1.5px solid #111;padding-top:24px;margin-bottom:60px;max-width:580px}
+.pq p{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;font-style:italic;line-height:1.55;color:#444}
 
-/* ═══════════════════════════════════════════════════
-   MAIN LAYOUT
-═══════════════════════════════════════════════════ */
-#main {
-  margin-left: calc(var(--nav-w) + 2px);
-}
-section {
-  min-height: 100vh;
-  padding: 0;
-  position: relative;
-}
+/* PAINS */
+.pains{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid #E2E2DE}
+.pain{padding:36px 32px 44px;border-right:1px solid #E2E2DE;display:flex;flex-direction:column;gap:16px;transition:background .25s;cursor:default}
+.pain:last-child{border-right:none}
+.pain:hover{background:#F3F3EF}
+.p-idx{font-size:9px;font-weight:400;letter-spacing:.2em;color:#ddd;text-transform:uppercase}
+.p-tag{display:inline-block;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#bbb;padding:3px 0;border-bottom:1px solid #e0e0dc;width:fit-content;transition:color .2s,border-color .2s}
+.pain:hover .p-tag{color:#111;border-color:#111}
+.pain.urg .p-tag{color:#111;border-color:#111}
+h3.pain-head{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.2;color:#111;margin:0}
+.p-body{font-size:12px;font-weight:300;line-height:1.78;color:#777;flex:1}
+.p-link{font-size:9px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:#ccc;background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:7px;transition:color .2s,gap .2s}
+.pain:hover .p-link{color:#111;gap:11px}
 
-/* ═══════════════════════════════════════════════════
-   SECTION 1 — HERO
-═══════════════════════════════════════════════════ */
-#hero {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 80px 80px 80px 80px;
-  min-height: 100vh;
-  background: var(--deep);
-  position: relative; overflow: hidden;
-}
-.hero-bg-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
-.hero-orb {
-  position: absolute; right: -200px; top: -200px;
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(27,58,107,0.6) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-orb2 {
-  position: absolute; right: 100px; bottom: -100px;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: 4px;
-  color: var(--gold);
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease) 0.2s forwards;
-}
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(72px, 9vw, 140px);
-  font-weight: 700;
-  line-height: 0.92;
-  letter-spacing: -3px;
-  color: var(--white);
-  margin-bottom: 12px;
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease) 0.35s forwards;
-}
-.hero-title span { color: var(--gold); display: block; }
-.hero-trademark {
-  font-size: 0.18em; vertical-align: super;
-  color: var(--gold); font-weight: 400;
-}
-.hero-sub {
-  font-family: var(--font-display);
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 300;
-  color: var(--muted);
-  max-width: 560px;
-  line-height: 1.5;
-  margin-bottom: 56px;
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease) 0.5s forwards;
-}
-.hero-meta {
-  display: flex; gap: 40px; flex-wrap: wrap;
-  margin-bottom: 56px;
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease) 0.65s forwards;
-}
-.hero-stat {
-  display: flex; flex-direction: column; gap: 4px;
-}
-.hero-stat-n {
-  font-family: var(--font-display);
-  font-size: 36px; font-weight: 700;
-  color: var(--white);
-  line-height: 1;
-}
-.hero-stat-l {
-  font-size: 11px; letter-spacing: 1.5px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-.hero-stat-divider {
-  width: 1px; background: rgba(255,255,255,0.1);
-  align-self: stretch;
-}
-.hero-cta {
-  display: flex; gap: 16px; flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease) 0.8s forwards;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 32px;
-  background: var(--gold);
-  color: var(--navy);
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 600;
-  letter-spacing: 0.5px;
-  border: none; border-radius: 2px;
-  cursor: none; text-decoration: none;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s;
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(245,158,11,0.3);
-}
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 32px;
-  background: transparent;
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 2px;
-  cursor: none; text-decoration: none;
-  transition: border-color 0.2s, background 0.2s;
-}
-.btn-ghost:hover {
-  border-color: var(--gold);
-  background: var(--gold-wash);
-}
-.hero-scroll {
-  position: absolute; bottom: 40px; left: 80px;
-  display: flex; align-items: center; gap: 14px;
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease) 1.1s forwards;
-}
-.scroll-line {
-  width: 40px; height: 1px;
-  background: var(--gold);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-.hero-scroll span {
-  font-size: 10px; letter-spacing: 3px;
-  color: var(--muted); text-transform: uppercase;
-  font-family: var(--font-mono);
-}
-@keyframes scrollPulse { 0%,100%{opacity:0.4;width:40px} 50%{opacity:1;width:60px} }
+/* FOTO + TEXTO */
+.foto-manifesto{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #E2E2DE;min-height:400px}
+.fm-img{overflow:hidden;position:relative;border-right:1px solid #E2E2DE}
+.fm-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s ease}
+.fm-img:hover img{transform:scale(1.03)}
+.fm-txt{padding:64px 52px;display:flex;flex-direction:column;justify-content:center}
+.fm-eyebrow{font-size:10px;font-weight:400;letter-spacing:.16em;color:#bbb;text-transform:uppercase;margin-bottom:24px}
+h2.fm-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,44px);font-weight:300;line-height:1.07;letter-spacing:-.015em;color:#111;margin:0 0 28px}
+h2.fm-title em{font-style:italic;color:#999}
+.fm-body{font-size:13px;font-weight:300;line-height:1.78;color:#777;margin-bottom:36px;max-width:420px}
 
-/* ═══════════════════════════════════════════════════
-   SECTION 2 — MANIFIESTO
-═══════════════════════════════════════════════════ */
-#manifesto {
-  background: var(--navy);
-  padding: 120px 80px;
-  display: flex; align-items: center;
-}
-.manifesto-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  max-width: 1200px;
-  width: 100%;
-}
-.manifesto-left { display: flex; flex-direction: column; justify-content: center; }
-.sec-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: 4px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.sec-title {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4vw, 60px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-  margin-bottom: 32px;
-}
-.manifesto-quote {
-  font-family: var(--font-display);
-  font-size: clamp(18px, 2vw, 26px);
-  font-weight: 300;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.75);
-  border-left: 3px solid var(--gold);
-  padding-left: 28px;
-  margin-bottom: 48px;
-}
-.manifesto-quote strong { color: var(--white); font-weight: 600; }
-.manifesto-right {
-  display: flex; flex-direction: column; gap: 20px;
-}
-.manifesto-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 4px;
-  padding: 28px 32px;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.3s, background 0.3s;
-}
-.manifesto-card::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--gold);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.4s var(--ease);
-}
-.manifesto-card:hover { border-color: rgba(245,158,11,0.2); background: var(--gold-wash); }
-.manifesto-card:hover::before { transform: scaleY(1); }
-.card-label {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 3px;
-  color: var(--gold); text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.card-text {
-  font-size: 14px; line-height: 1.65;
-  color: rgba(255,255,255,0.65);
-}
+/* FOOTER */
+.ad-footer{padding:22px 52px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E2E2DE}
+.fc{font-size:10px;font-weight:400;letter-spacing:.08em;color:#ccc}
 
-/* ═══════════════════════════════════════════════════
-   SECTION 3 — CINCO PILARES
-═══════════════════════════════════════════════════ */
-#pillars {
-  background: var(--deep);
-  padding: 120px 80px;
-}
-.pillars-header { margin-bottom: 72px; }
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-.pillar-cell {
-  background: var(--deep);
-  padding: 48px 32px;
-  display: flex; flex-direction: column;
-  gap: 20px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.4s;
-  cursor: none;
-}
-.pillar-cell::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--pillar-color, var(--gold));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s var(--ease);
-}
-.pillar-cell:hover { background: rgba(255,255,255,0.02); }
-.pillar-cell:hover::after { transform: scaleX(1); }
-.pillar-n {
-  font-family: var(--font-mono);
-  font-size: 11px; color: var(--muted);
-  letter-spacing: 2px;
-}
-.pillar-icon {
-  width: 44px; height: 44px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  background: var(--pillar-bg, rgba(245,158,11,0.1));
-  flex-shrink: 0;
-}
-.pillar-name {
-  font-family: var(--font-display);
-  font-size: 17px; font-weight: 600;
-  line-height: 1.25;
-  color: var(--white);
-}
-.pillar-tag {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 2px;
-  color: var(--pillar-color, var(--gold));
-  text-transform: uppercase;
-}
-.pillar-desc {
-  font-size: 12px; line-height: 1.65;
-  color: var(--muted);
-  flex: 1;
-}
-.pillar-more {
-  font-family: var(--font-mono);
-  font-size: 10px; color: var(--pillar-color, var(--gold));
-  display: flex; align-items: center; gap: 6px;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.3s, transform 0.3s;
-}
-.pillar-cell:hover .pillar-more { opacity: 1; transform: translateY(0); }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}
+.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.3s}
+.reveal.d4{transition-delay:.4s}
+.reveal.d5{transition-delay:.5s}
 
-/* ═══════════════════════════════════════════════════
-   SECTION 4 — CONTROL ROOM APP
-═══════════════════════════════════════════════════ */
-#controlroom {
-  background: #060D1A;
-  padding: 80px 0 0;
-  min-height: 100vh;
+/* RESPONSIVE */
+@media(max-width:900px){
+  .ad-nav{padding:20px 24px}
+  .nav-i{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-l{padding:48px 24px}
+  .hero-r{min-height:300px}
+  .hero-img-main{min-height:260px}
+  .metrics-row{grid-template-columns:repeat(2,1fr)}
+  .strip-3{grid-template-columns:1fr}
+  .strip-img{aspect-ratio:16/9}
+  .manifesto{grid-template-columns:1fr}
+  .mf-idx{padding:40px 24px 0;border-right:none;border-bottom:1px solid #E2E2DE}
+  .mf-body{padding:40px 24px}
+  .pains{grid-template-columns:1fr}
+  .pain{border-right:none;border-bottom:1px solid #E2E2DE}
+  .foto-manifesto{grid-template-columns:1fr}
+  .fm-img{min-height:260px;border-right:none;border-bottom:1px solid #E2E2DE}
+  .fm-txt{padding:40px 24px}
+  .ad-footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center}
 }
-.cr-topbar {
-  display: flex; align-items: center; gap: 24px;
-  padding: 0 80px 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.cr-title-block { flex: 1; }
-.cr-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 4px; color: var(--gold);
-  margin-bottom: 6px;
-}
-.cr-heading {
-  font-family: var(--font-display);
-  font-size: 32px; font-weight: 700;
-  letter-spacing: -0.5px;
-}
-.cr-badge {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px 14px;
-  background: rgba(16,185,129,0.1);
-  border: 1px solid rgba(16,185,129,0.2);
-  border-radius: 100px;
-  font-family: var(--font-mono);
-  font-size: 10px; color: var(--green);
-}
-.cr-live-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--green);
-  animation: livePulse 2s ease-in-out infinite;
-}
-@keyframes livePulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(16,185,129,0.4)} 50%{opacity:.8;box-shadow:0 0 0 6px rgba(16,185,129,0)} }
-.cr-time {
-  font-family: var(--font-mono);
-  font-size: 12px; color: var(--muted);
-}
-
-/* CR TABS */
-.cr-tabs {
-  display: flex; gap: 0;
-  padding: 0 80px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  margin-bottom: 0;
-}
-.cr-tab {
-  padding: 16px 24px;
-  font-family: var(--font-body);
-  font-size: 12px; font-weight: 500;
-  color: var(--muted);
-  background: none; border: none;
-  border-bottom: 2px solid transparent;
-  cursor: none;
-  transition: color 0.2s, border-color 0.2s;
-  letter-spacing: 0.3px;
-}
-.cr-tab:hover { color: var(--white); }
-.cr-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
-
-/* CR PANELS */
-.cr-panel { display: none; padding: 32px 80px 60px; }
-.cr-panel.active { display: block; }
-
-/* KPI STRIP */
-.kpi-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 28px;
-}
-.kpi-box {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 4px;
-  padding: 20px 24px;
-  position: relative; overflow: hidden;
-}
-.kpi-box::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--kpi-color, var(--gold));
-}
-.kpi-val {
-  font-family: var(--font-display);
-  font-size: 34px; font-weight: 700;
-  color: var(--kpi-color, var(--white));
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.kpi-lbl {
-  font-size: 11px; color: var(--muted);
-  letter-spacing: 0.5px;
-}
-.kpi-delta {
-  position: absolute; top: 16px; right: 16px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-}
-.kpi-delta.up { color: var(--green); }
-.kpi-delta.down { color: var(--red); }
-.kpi-delta.neutral { color: var(--amber); }
-
-/* CR GRID 2-col */
-.cr-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.cr-grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.cr-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 4px;
-  padding: 24px;
-}
-.cr-card-title {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 3px;
-  color: var(--muted); text-transform: uppercase;
-  margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
-}
-.cr-card-title::after {
-  content: ''; flex: 1; height: 1px;
-  background: rgba(255,255,255,0.06);
-}
-
-/* ALERT ROWS */
-.alert-item {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 16px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: border-color 0.2s;
-  cursor: none;
-}
-.alert-item:hover { border-color: rgba(255,255,255,0.12); }
-.alert-icon-box {
-  width: 28px; height: 28px; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; flex-shrink: 0;
-  font-weight: 700;
-}
-.alert-icon-box.r { background: rgba(239,68,68,0.12); color: var(--red); }
-.alert-icon-box.a { background: rgba(245,158,11,0.12); color: var(--amber); }
-.alert-icon-box.g { background: rgba(16,185,129,0.12); color: var(--green); }
-.alert-body { flex: 1; min-width: 0; }
-.alert-title {
-  font-size: 13px; font-weight: 600;
-  color: var(--white); margin-bottom: 4px;
-  line-height: 1.3;
-}
-.alert-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
-.alert-meta {
-  font-family: var(--font-mono);
-  font-size: 9px; color: var(--muted);
-  white-space: nowrap; flex-shrink: 0;
-  align-self: center;
-}
-.alert-action {
-  padding: 5px 12px;
-  border: 1px solid rgba(245,158,11,0.3);
-  border-radius: 2px;
-  background: transparent;
-  color: var(--gold);
-  font-size: 10px; font-weight: 500;
-  cursor: none;
-  transition: background 0.2s;
-}
-.alert-action:hover { background: var(--gold-wash); }
-
-/* RISK BARS */
-.risk-row {
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 14px;
-}
-.risk-name { font-size: 12px; color: rgba(255,255,255,0.7); width: 180px; flex-shrink: 0; }
-.risk-track {
-  flex: 1; height: 4px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 2px; overflow: hidden;
-}
-.risk-fill {
-  height: 100%; border-radius: 2px;
-  transition: width 1.5s var(--ease);
-}
-.risk-pct {
-  font-family: var(--font-mono);
-  font-size: 10px; width: 36px; text-align: right;
-  flex-shrink: 0;
-}
-.risk-badge {
-  font-size: 9px; padding: 2px 8px;
-  border-radius: 2px; font-weight: 500;
-  width: 80px; text-align: center;
-  flex-shrink: 0;
-}
-
-/* PIPELINE BARS */
-.pipe-row {
-  display: flex; align-items: center; gap: 0;
-  height: 36px; border-radius: 3px; overflow: hidden;
-  margin-bottom: 10px; position: relative;
-}
-.pipe-seg {
-  height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 10px; font-weight: 600;
-  color: rgba(255,255,255,0.9);
-  transition: flex 1s var(--ease);
-  position: relative;
-}
-.pipe-legend {
-  display: flex; gap: 20px; flex-wrap: wrap;
-  margin-top: 10px;
-}
-.pipe-legend-item {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 11px; color: var(--muted);
-}
-.pipe-dot {
-  width: 8px; height: 8px; border-radius: 2px;
-}
-
-/* MINI CHARTS */
-.sparkline-wrap {
-  display: flex; flex-direction: column; gap: 20px;
-}
-.sparkline-item { display: flex; flex-direction: column; gap: 6px; }
-.sparkline-header {
-  display: flex; justify-content: space-between;
-  font-size: 12px; color: rgba(255,255,255,0.6);
-}
-.sparkline-val { font-weight: 600; color: var(--white); }
-.sparkline-svg { width: 100%; height: 48px; }
-
-/* DECISION TABLE */
-.decision-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.decision-table th {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 2px;
-  color: var(--muted); text-align: left;
-  padding: 10px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  text-transform: uppercase;
-}
-.decision-table td {
-  font-size: 12px; color: rgba(255,255,255,0.7);
-  padding: 13px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  vertical-align: top;
-}
-.decision-table tr:hover td { background: rgba(255,255,255,0.02); }
-.decision-table td:first-child { color: var(--white); font-weight: 500; }
-.priority-badge {
-  display: inline-block;
-  padding: 2px 8px; border-radius: 2px;
-  font-size: 9px; font-weight: 600; letter-spacing: 1px;
-}
-.priority-badge.alta { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
-.priority-badge.media { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
-.priority-badge.baja { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
-.impact-tag {
-  display: inline-block;
-  padding: 2px 8px; border-radius: 2px;
-  font-size: 9px; font-family: var(--font-mono);
-  background: rgba(255,255,255,0.05); color: var(--muted);
-}
-
-/* TENANT STATUS */
-.tenant-grid {
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  gap: 4px;
-  margin-bottom: 16px;
-}
-.tenant-cell {
-  aspect-ratio: 1;
-  border-radius: 2px;
-  cursor: none;
-  position: relative;
-  transition: transform 0.2s;
-}
-.tenant-cell:hover { transform: scale(1.3); z-index: 10; }
-.tenant-cell[title]:hover::after {
-  content: attr(title);
-  position: absolute;
-  bottom: calc(100% + 4px); left: 50%;
-  transform: translateX(-50%);
-  background: var(--navy);
-  color: var(--white);
-  font-size: 9px; padding: 3px 7px;
-  border-radius: 3px; white-space: nowrap;
-  pointer-events: none;
-  z-index: 20;
-  border: 1px solid rgba(245,158,11,0.2);
-}
-
-/* TIMELINE */
-.timeline-wrap { position: relative; padding-left: 20px; }
-.timeline-spine {
-  position: absolute; left: 6px; top: 0; bottom: 0;
-  width: 1px; background: rgba(255,255,255,0.06);
-}
-.timeline-item {
-  position: relative; padding: 0 0 28px 28px;
-}
-.timeline-dot {
-  position: absolute; left: -14px; top: 3px;
-  width: 12px; height: 12px; border-radius: 50%;
-  border: 2px solid var(--deep);
-}
-.tl-phase {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 2px; color: var(--muted);
-  text-transform: uppercase; margin-bottom: 4px;
-}
-.tl-title {
-  font-size: 13px; font-weight: 600; color: var(--white);
-  margin-bottom: 4px;
-}
-.tl-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
-
-/* ═══════════════════════════════════════════════════
-   SECTION 5 — DOCUMENTOS
-═══════════════════════════════════════════════════ */
-#docs {
-  background: var(--navy);
-  padding: 120px 80px;
-}
-.docs-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.06);
-  margin-top: 60px;
-}
-.doc-card {
-  background: var(--navy);
-  padding: 40px 32px;
-  display: flex; flex-direction: column; gap: 20px;
-  position: relative; overflow: hidden;
-  transition: background 0.3s;
-  text-decoration: none; color: inherit;
-  cursor: none;
-}
-.doc-card:hover { background: rgba(245,158,11,0.04); }
-.doc-card::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 0; right: 0; height: 2px;
-  background: var(--doc-color, var(--gold));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.4s var(--ease);
-}
-.doc-card:hover::after { transform: scaleX(1); }
-.doc-icon {
-  width: 52px; height: 52px;
-  border-radius: 8px;
-  background: var(--doc-bg, rgba(245,158,11,0.1));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-}
-.doc-type {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 3px;
-  color: var(--doc-color, var(--gold));
-  text-transform: uppercase;
-}
-.doc-name {
-  font-family: var(--font-display);
-  font-size: 18px; font-weight: 600;
-  line-height: 1.25; color: var(--white);
-}
-.doc-desc {
-  font-size: 12px; color: var(--muted);
-  line-height: 1.65; flex: 1;
-}
-.doc-download {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 11px; color: var(--doc-color, var(--gold));
-  font-weight: 500;
-  opacity: 0; transform: translateX(-6px);
-  transition: opacity 0.3s, transform 0.3s;
-}
-.doc-card:hover .doc-download { opacity: 1; transform: translateX(0); }
-.doc-download svg { width: 14px; height: 14px; }
-
-/* ═══════════════════════════════════════════════════
-   SECTION 6 — WOW / MANIFESTO FINAL
-═══════════════════════════════════════════════════ */
-#final {
-  background: var(--deep);
-  padding: 160px 80px;
-  display: flex; align-items: center; justify-content: center;
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.final-glow {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(27,58,107,0.4) 0%, transparent 65%);
-  pointer-events: none;
-}
-.final-inner { position: relative; z-index: 1; max-width: 800px; }
-.final-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: 5px; color: var(--gold);
-  text-transform: uppercase; margin-bottom: 40px;
-  display: block;
-}
-.final-title {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 5vw, 72px);
-  font-weight: 700; line-height: 1.05;
-  letter-spacing: -2px;
-  margin-bottom: 28px;
-}
-.final-sub {
-  font-size: 18px; color: var(--muted);
-  line-height: 1.65; margin-bottom: 60px;
-}
-.final-cta { display: flex; gap: 16px; justify-content: center; }
-.final-divider {
-  width: 60px; height: 1px;
-  background: var(--gold);
-  margin: 0 auto 40px;
-}
-
-/* ═══════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════ */
-footer {
-  background: #040A12;
-  border-top: 1px solid rgba(255,255,255,0.04);
-  padding: 40px 80px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.footer-brand {
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 600; color: var(--gold);
-}
-.footer-meta { font-size: 11px; color: var(--muted); }
-
-/* ═══════════════════════════════════════════════════
-   SCROLL ANIMATIONS
-═══════════════════════════════════════════════════ */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-.reveal-d1 { transition-delay: 0.1s; }
-.reveal-d2 { transition-delay: 0.2s; }
-.reveal-d3 { transition-delay: 0.3s; }
-.reveal-d4 { transition-delay: 0.4s; }
-
-@keyframes fadeUp {
-  from { opacity:0; transform: translateY(20px); }
-  to { opacity:1; transform: translateY(0); }
-}
-
-/* ═══════════════════════════════════════════════════
-   MOBILE
-═══════════════════════════════════════════════════ */
-@media (max-width: 900px) {
-  #sidenav { display: none; }
-  #main { margin-left: 0; }
-  #hero, #manifesto, #pillars, #controlroom, #docs, #final, footer {
-    padding-left: 24px; padding-right: 24px;
-  }
-  .manifesto-inner { grid-template-columns: 1fr; gap: 48px; }
-  .pillars-grid { grid-template-columns: 1fr 1fr; }
-  .docs-grid { grid-template-columns: 1fr 1fr; }
-  .kpi-strip { grid-template-columns: 1fr 1fr; }
-  .cr-grid-2, .cr-grid-3 { grid-template-columns: 1fr; }
-  .cr-topbar, .cr-panel { padding-left: 24px; padding-right: 24px; }
-  .cr-tabs { padding: 0 24px; }
-  body { cursor: auto; }
-  #cursor, #cursor-ring { display: none; }
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--deep); }
-::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.3); border-radius: 2px; }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-
-<!-- VERTICAL SPINE -->
-<div id="spine"></div>
-
-<!-- VERTICAL NAV -->
-<nav id="sidenav">
-  <div class="nav-logo">ASSET SOVEREIGN™</div>
-  <div class="nav-links">
-    <div class="nav-dot active" onclick="scrollTo('hero')">
-      <div class="nav-tooltip">Inicio</div>
-    </div>
-    <div class="nav-line"></div>
-    <div class="nav-dot" onclick="scrollTo('manifesto')">
-      <div class="nav-tooltip">Manifiesto</div>
-    </div>
-    <div class="nav-line"></div>
-    <div class="nav-dot" onclick="scrollTo('pillars')">
-      <div class="nav-tooltip">5 Pilares</div>
-    </div>
-    <div class="nav-line"></div>
-    <div class="nav-dot" onclick="scrollTo('controlroom')">
-      <div class="nav-tooltip">Control Room</div>
-    </div>
-    <div class="nav-line"></div>
-    <div class="nav-dot" onclick="scrollTo('docs')">
-      <div class="nav-tooltip">Documentos</div>
-    </div>
-    <div class="nav-line"></div>
-    <div class="nav-dot" onclick="scrollTo('final')">
-      <div class="nav-tooltip">Propuesta</div>
-    </div>
+<nav class="ad-nav">
+  <div class="nav-wm">SAVILLS × PATRIZIA</div>
+  <div class="nav-r">
+    <a href="#manifesto" class="nav-i">Manifiesto</a>
+    <a href="#pilares" class="nav-i">Pilares</a>
+    <a href="#controlroom" class="nav-i">Control Room</a>
+    <button class="nav-btn">Abrir Control Room →</button>
   </div>
-  <div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:1px;writing-mode:vertical-rl;transform:rotate(180deg)">SAVILLS 2026</div>
 </nav>
 
-<!-- MAIN -->
-<div id="main">
-
-<!-- ══ HERO ══════════════════════════════════════ -->
-<section id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-orb"></div>
-  <div class="hero-orb2"></div>
-
-  <div class="hero-eyebrow">SAVILLS × PATRIZIA · COBEGA I · BARCELONA</div>
-
-  <h1 class="hero-title">
-    ASSET
-    <span>SOVEREIGN<sup class="hero-trademark">™</sup></span>
-  </h1>
-
-  <p class="hero-sub">
-    El primer sistema de gobernanza inmobiliaria institucional diseñado para devolver el control al propietario.
-  </p>
-
-  <div class="hero-meta">
-    <div class="hero-stat">
-      <span class="hero-stat-n">225</span>
-      <span class="hero-stat-l">Viviendas</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-l">
+    <div>
+      <div class="hero-tag reveal">Savills × Patrizia · Cobega I · Barcelona · 2026</div>
+      <h1 class="headline reveal d1">
+        Asset<br>
+        <em>Sovereign</em><sup style="font-family:'Inter',sans-serif;font-size:.16em;vertical-align:super;font-style:normal;font-weight:400;letter-spacing:0;color:#ccc">™</sup>
+      </h1>
+      <p class="hero-sub reveal d2">El primer sistema de gobernanza inmobiliaria institucional diseñado para devolver el control al propietario.</p>
     </div>
-    <div class="hero-stat-divider"></div>
-    <div class="hero-stat">
-      <span class="hero-stat-n">90%</span>
-      <span class="hero-stat-l">Ocupación actual</span>
-    </div>
-    <div class="hero-stat-divider"></div>
-    <div class="hero-stat">
-      <span class="hero-stat-n">BTR→BTS</span>
-      <span class="hero-stat-l">Transición estratégica</span>
-    </div>
-    <div class="hero-stat-divider"></div>
-    <div class="hero-stat">
-      <span class="hero-stat-n">€38M+</span>
-      <span class="hero-stat-l">VAN estimado</span>
+    <div class="hero-ctas reveal d3">
+      <a href="#controlroom" class="cta-p">→ Abrir Control Room</a>
+      <a href="#manifesto" class="cta-g">Leer el manifiesto</a>
     </div>
   </div>
 
-  <div class="hero-cta">
-    <a href="#controlroom" class="btn-primary" onclick="event.preventDefault();scrollTo('controlroom')">
-      <span>→</span> Abrir Control Room
-    </a>
-    <a href="#manifesto" class="btn-ghost" onclick="event.preventDefault();scrollTo('manifesto')">
-      Leer el manifiesto
-    </a>
-  </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- ══ MANIFIESTO ════════════════════════════════ -->
-<section id="manifesto">
-  <div class="manifesto-inner">
-    <div class="manifesto-left">
-      <div class="sec-eyebrow reveal">El fin del PM tradicional</div>
-      <h2 class="sec-title reveal reveal-d1">
-        El Property<br>Management<br>está roto.
-      </h2>
-      <div class="manifesto-quote reveal reveal-d2">
-        «Recibir un PDF mensual con las incidencias del edificio<br>
-        <strong>no es información. Es ruido.</strong>»
-      </div>
-      <p class="reveal reveal-d3" style="font-size:15px;line-height:1.75;color:var(--muted);max-width:480px">
-        Hoy, un Asset Manager institucional gestiona portfolios multijurisdicción bajo marcos regulatorios en cambio constante. Sus LPs exigen datos. Sus gestores entregan narrativas.
-        <br><br>
-        ASSET SOVEREIGN™ cierra ese abismo.
-      </p>
+  <div class="hero-r">
+    <div class="hero-img-main">
+      <img
+        src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1200&q=85&auto=format&fit=crop"
+        alt="Fachada edificio residencial contemporáneo Barcelona"
+        loading="eager"
+      />
+      <div class="img-caption">Cobega I · Rambla Guipúzcoa 163–185 · Sant Martí · Barcelona</div>
     </div>
-    <div class="manifesto-right">
-      <div class="manifesto-card reveal">
-        <div class="card-label">Pain #1 — El reconocido</div>
-        <p class="card-text">Sus LPs exigen datos institucionales en tiempo real. Los gestores locales producen informes operativos. El abismo entre ambos se llena con Excel. Decisiones de inversión tomadas sin datos reales del activo.</p>
+    <div class="metrics-row">
+      <div class="met">
+        <div class="mv">225</div>
+        <div class="ml">Viviendas</div>
       </div>
-      <div class="manifesto-card reveal reveal-d1">
-        <div class="card-label">Pain #2 — El complejo</div>
-        <p class="card-text">La transición BTR→BTS con 225 inquilinos al 90% exige coordinación legal, comercial, comunicacional y de comunidad. El PM tradicional solo gestiona la operación. Nadie gestiona la transición completa.</p>
+      <div class="met">
+        <div class="mv">90%</div>
+        <div class="ml">Ocupación actual</div>
       </div>
-      <div class="manifesto-card reveal reveal-d2" style="border-color:rgba(239,68,68,0.2)">
-        <div class="card-label" style="color:var(--red)">Pain #3 — El no dicho</div>
-        <p class="card-text">Ley de Vivienda 12/2023 + regulación catalana + presión mediática. La privatización en Barcelona tiene riesgo legal, reputacional y de comunidad activo. <strong style="color:var(--white)">El primero que lo nombra gana la credibilidad.</strong></p>
+      <div class="met">
+        <div class="mv" style="font-size:16px;letter-spacing:.01em;padding-top:6px">BTR → BTS</div>
+        <div class="ml">Transición estratégica</div>
+      </div>
+      <div class="met">
+        <div class="mv">€38M<sup style="font-size:.45em;vertical-align:super;font-weight:300">+</sup></div>
+        <div class="ml">VAN estimado</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CINCO PILARES ═════════════════════════════ -->
-<section id="pillars">
-  <div class="pillars-header">
-    <div class="sec-eyebrow reveal">La arquitectura del sistema</div>
-    <h2 class="sec-title reveal reveal-d1">Cinco pilares.<br>Un solo objetivo: <span style="color:var(--gold)">control total.</span></h2>
+<!-- TIRA FOTOGRÁFICA -->
+<div class="strip-3">
+  <div class="strip-img reveal">
+    <img
+      src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80&auto=format&fit=crop"
+      alt="Arquitectura residencial moderna exterior"
+      loading="lazy"
+    />
+    <div class="strip-label">Arquitectura · BTR</div>
   </div>
-  <div class="pillars-grid">
-    <div class="pillar-cell reveal" style="--pillar-color:#2563EB;--pillar-bg:rgba(37,99,235,0.1)">
-      <div class="pillar-n">01</div>
-      <div class="pillar-icon">⚡</div>
-      <div class="pillar-name">Operación Excelente</div>
-      <div class="pillar-tag">Zero Surprise Ops™</div>
-      <p class="pillar-desc">Protocolo BTR→BTS para 225 inquilinos activos. SLAs con devolución económica real. Sistema de escalado automático antes de que el cliente llame.</p>
-      <div class="pillar-more">Ver detalle →</div>
-    </div>
-    <div class="pillar-cell reveal reveal-d1" style="--pillar-color:#8B5CF6;--pillar-bg:rgba(139,92,246,0.1)">
-      <div class="pillar-n">02</div>
-      <div class="pillar-icon">👁</div>
-      <div class="pillar-name">Control Total</div>
-      <div class="pillar-tag">Visibility Layer™</div>
-      <p class="pillar-desc">El Asset Manager responde cualquier pregunta LP en 30 segundos. Reporting que habla de impacto en NOI, no de incidencias resueltas.</p>
-      <div class="pillar-more">Ver detalle →</div>
-    </div>
-    <div class="pillar-cell reveal reveal-d2" style="--pillar-color:#06B6D4;--pillar-bg:rgba(6,182,212,0.1)">
-      <div class="pillar-n">03</div>
-      <div class="pillar-icon">🗄</div>
-      <div class="pillar-name">Inteligencia Operativa</div>
-      <div class="pillar-tag">Data Sovereignty™</div>
-      <p class="pillar-desc">Todos los datos pertenecen a PATRIZIA desde el día 1. APIs abiertas. Exportación total. Si cambias de gestor, te llevas toda la historia del activo.</p>
-      <div class="pillar-more">Ver detalle →</div>
-    </div>
-    <div class="pillar-cell reveal reveal-d3" style="--pillar-color:#F59E0B;--pillar-bg:rgba(245,158,11,0.1)">
-      <div class="pillar-n">04</div>
-      <div class="pillar-icon">📡</div>
-      <div class="pillar-name">Predicción de Riesgo</div>
-      <div class="pillar-tag">Risk Horizon™</div>
-      <p class="pillar-desc">Riesgo legal, de mercado, reputacional y de comunidad — anticipado, cuantificado y gestionado. No reactivo. Proactivo.</p>
-      <div class="pillar-more">Ver detalle →</div>
-    </div>
-    <div class="pillar-cell reveal reveal-d4" style="--pillar-color:#10B981;--pillar-bg:rgba(16,185,129,0.1)">
-      <div class="pillar-n">05</div>
-      <div class="pillar-icon">📈</div>
-      <div class="pillar-name">Optimización Continua</div>
-      <div class="pillar-tag">Value Engine™</div>
-      <p class="pillar-desc">El PM deja de ser coste. Se convierte en generador de información que aumenta el valor del activo. Benchmarking europeo. Revisión estratégica semestral.</p>
-      <div class="pillar-more">Ver detalle →</div>
-    </div>
+  <div class="strip-img reveal d1">
+    <img
+      src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80&auto=format&fit=crop"
+      alt="Interior vivienda contemporánea"
+      loading="lazy"
+    />
+    <div class="strip-label">Interior · Tipología 2D</div>
   </div>
-</section>
-
-<!-- ══ CONTROL ROOM ═══════════════════════════════ -->
-<section id="controlroom">
-  <div class="cr-topbar">
-    <div class="cr-title-block">
-      <div class="cr-eyebrow">ASSET SOVEREIGN™ · CONTROL ROOM</div>
-      <h2 class="cr-heading">Cobega I — Rambla G185, Barcelona</h2>
-    </div>
-    <div class="cr-badge">
-      <div class="cr-live-dot"></div>
-      EN VIVO
-    </div>
-    <div class="cr-time" id="cr-clock">--:--:--</div>
+  <div class="strip-img reveal d2">
+    <img
+      src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80&auto=format&fit=crop"
+      alt="Vista barrio Barcelona La Verneda"
+      loading="lazy"
+    />
+    <div class="strip-label">Entorno · La Verneda · Sant Martí</div>
   </div>
+</div>
 
-  <div class="cr-tabs">
-    <button class="cr-tab active" onclick="crTab(this,'overview')">Vista General</button>
-    <button class="cr-tab" onclick="crTab(this,'alerts')">Alertas de Decisión</button>
-    <button class="cr-tab" onclick="crTab(this,'risk')">Risk Horizon</button>
-    <button class="cr-tab" onclick="crTab(this,'pipeline')">Pipeline Ventas</button>
-    <button class="cr-tab" onclick="crTab(this,'tenants')">Arrendatarios</button>
-    <button class="cr-tab" onclick="crTab(this,'roadmap')">Roadmap</button>
+<!-- MANIFIESTO -->
+<section class="manifesto" id="manifesto">
+  <div class="mf-idx">
+    <div class="mf-num">— 02 —</div>
   </div>
-
-  <!-- PANEL: OVERVIEW -->
-  <div class="cr-panel active" id="panel-overview">
-    <div class="kpi-strip">
-      <div class="kpi-box" style="--kpi-color:#10B981">
-        <div class="kpi-val" id="kpi-occ">89%</div>
-        <div class="kpi-lbl">Ocupación actual</div>
-        <div class="kpi-delta up">↑ +2.1% vs mes ant.</div>
-      </div>
-      <div class="kpi-box" style="--kpi-color:#60A5FA">
-        <div class="kpi-val">€847K</div>
-        <div class="kpi-lbl">NOI anualizado</div>
-        <div class="kpi-delta neutral">≈ en línea con plan</div>
-      </div>
-      <div class="kpi-box" style="--kpi-color:#F59E0B">
-        <div class="kpi-val">47</div>
-        <div class="kpi-lbl">Unidades en proceso venta</div>
-        <div class="kpi-delta down">↓ vs objetivo 60</div>
-      </div>
-      <div class="kpi-box" style="--kpi-color:#EF4444">
-        <div class="kpi-val">3</div>
-        <div class="kpi-lbl">Alertas activas</div>
-        <div class="kpi-delta down">↑ 1 nueva esta semana</div>
-      </div>
-    </div>
-
-    <div class="cr-grid-2">
-      <!-- Alertas top -->
-      <div class="cr-card">
-        <div class="cr-card-title">Alertas prioritarias</div>
-        <div class="alert-item">
-          <div class="alert-icon-box r">!</div>
-          <div class="alert-body">
-            <div class="alert-title">Riesgo regulatorio alto — Art. 17</div>
-            <div class="alert-desc">3 arrendatarios podrían acogerse a Ley Vivienda. Impacto estimado: +4-6 meses en timeline.</div>
-          </div>
-          <div class="alert-meta">Hoy</div>
-          <button class="alert-action">Gestionar</button>
-        </div>
-        <div class="alert-item">
-          <div class="alert-icon-box a">!</div>
-          <div class="alert-body">
-            <div class="alert-title">Velocidad absorción por debajo</div>
-            <div class="alert-desc">Ritmo actual 2.1 unid/mes vs objetivo 3.5. Revisar estrategia precio zona Poblenou.</div>
-          </div>
-          <div class="alert-meta">3d</div>
-          <button class="alert-action">Revisar</button>
-        </div>
-        <div class="alert-item">
-          <div class="alert-icon-box g">✓</div>
-          <div class="alert-body">
-            <div class="alert-title">8 candidatos oferta preferente activados</div>
-            <div class="alert-desc">12 contratos con vencimiento próximo. 8 inquilinos candidatos para compra preferente.</div>
-          </div>
-          <div class="alert-meta">Esta sem.</div>
-          <button class="alert-action">Ver</button>
-        </div>
-      </div>
-
-      <!-- Mini sparklines -->
-      <div class="cr-card">
-        <div class="cr-card-title">Evolución mensual</div>
-        <div class="sparkline-wrap">
-          <div class="sparkline-item">
-            <div class="sparkline-header">
-              <span>Ventas acumuladas</span>
-              <span class="sparkline-val">47 / 225</span>
-            </div>
-            <svg class="sparkline-svg" viewBox="0 0 300 48" preserveAspectRatio="none">
-              <polyline points="0,44 30,42 60,38 90,34 120,30 150,27 180,24 210,20 240,18 270,15 300,13"
-                fill="none" stroke="#2563EB" stroke-width="1.5"/>
-              <polyline points="0,44 30,42 60,38 90,34 120,30 150,27 180,24 210,20 240,18 270,15 300,13 300,48 0,48"
-                fill="rgba(37,99,235,0.08)" stroke="none"/>
-            </svg>
-          </div>
-          <div class="sparkline-item">
-            <div class="sparkline-header">
-              <span>NOI mensual (€K)</span>
-              <span class="sparkline-val">70.6</span>
-            </div>
-            <svg class="sparkline-svg" viewBox="0 0 300 48" preserveAspectRatio="none">
-              <polyline points="0,20 30,22 60,18 90,16 120,20 150,14 180,12 210,16 240,10 270,12 300,8"
-                fill="none" stroke="#10B981" stroke-width="1.5"/>
-              <polyline points="0,20 30,22 60,18 90,16 120,20 150,14 180,12 210,16 240,10 270,12 300,8 300,48 0,48"
-                fill="rgba(16,185,129,0.08)" stroke="none"/>
-            </svg>
-          </div>
-          <div class="sparkline-item">
-            <div class="sparkline-header">
-              <span>Score de riesgo</span>
-              <span class="sparkline-val" style="color:#EF4444">Alto</span>
-            </div>
-            <svg class="sparkline-svg" viewBox="0 0 300 48" preserveAspectRatio="none">
-              <polyline points="0,36 30,34 60,30 90,28 120,24 150,22 180,18 210,20 240,16 270,14 300,12"
-                fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,2"/>
-              <polyline points="0,36 30,34 60,30 90,28 120,24 150,22 180,18 210,20 240,16 270,14 300,12 300,48 0,48"
-                fill="rgba(239,68,68,0.06)" stroke="none"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pipeline bar -->
-    <div class="cr-card">
-      <div class="cr-card-title">Pipeline de privatización — 225 unidades</div>
-      <div class="pipe-row">
-        <div class="pipe-seg" style="flex:47;background:#10B981">47</div>
-        <div class="pipe-seg" style="flex:23;background:#F59E0B">23</div>
-        <div class="pipe-seg" style="flex:132;background:rgba(255,255,255,0.08)">132</div>
-        <div class="pipe-seg" style="flex:23;background:#EF4444">23</div>
-      </div>
-      <div class="pipe-legend">
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#10B981"></div>Vendidas (47)</div>
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#F59E0B"></div>En proceso (23)</div>
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:rgba(255,255,255,0.15)"></div>Disponibles (132)</div>
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#EF4444"></div>Bloqueadas regulatorio (23)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL: ALERTAS -->
-  <div class="cr-panel" id="panel-alerts">
-    <div class="kpi-strip">
-      <div class="kpi-box" style="--kpi-color:#EF4444"><div class="kpi-val">3</div><div class="kpi-lbl">Alertas críticas</div></div>
-      <div class="kpi-box" style="--kpi-color:#F59E0B"><div class="kpi-val">5</div><div class="kpi-lbl">Alertas medias</div></div>
-      <div class="kpi-box" style="--kpi-color:#10B981"><div class="kpi-val">8</div><div class="kpi-lbl">Info positiva</div></div>
-      <div class="kpi-box" style="--kpi-color:#60A5FA"><div class="kpi-val">48h</div><div class="kpi-lbl">Tiempo medio resolución</div></div>
-    </div>
-    <div class="cr-card">
-      <div class="cr-card-title">Decisiones pendientes — ordenadas por impacto financiero</div>
-      <table class="decision-table">
-        <thead>
-          <tr>
-            <th>Decisión</th>
-            <th>Prioridad</th>
-            <th>Impacto VAN</th>
-            <th>Plazo</th>
-            <th>Responsable</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Activar protocolo Art. 17 para 3 arrendatarios en riesgo</td>
-            <td><span class="priority-badge alta">ALTA</span></td>
-            <td><span class="impact-tag">−€2.1M si no se actúa</span></td>
-            <td>Esta semana</td>
-            <td>Savills Legal</td>
-            <td style="color:var(--red)">● Pendiente</td>
-          </tr>
-          <tr>
-            <td>Revisar estrategia precio zona Poblenou vs competencia</td>
-            <td><span class="priority-badge alta">ALTA</span></td>
-            <td><span class="impact-tag">−€890K desviación</span></td>
-            <td>15 días</td>
-            <td>AM PATRIZIA</td>
-            <td style="color:var(--amber)">● En análisis</td>
-          </tr>
-          <tr>
-            <td>Formalizar oferta preferente 8 inquilinos candidatos</td>
-            <td><span class="priority-badge media">MEDIA</span></td>
-            <td><span class="impact-tag">+€640K potencial</span></td>
-            <td>30 días</td>
-            <td>Savills Residencial</td>
-            <td style="color:var(--amber)">● Preparando</td>
-          </tr>
-          <tr>
-            <td>Protocolo comunicación medios — narrativa privatización</td>
-            <td><span class="priority-badge media">MEDIA</span></td>
-            <td><span class="impact-tag">Riesgo reputacional</span></td>
-            <td>Esta semana</td>
-            <td>Savills Comms</td>
-            <td style="color:var(--green)">● En marcha</td>
-          </tr>
-          <tr>
-            <td>Monitorización cambio normativo DOGC (decreto vivienda)</td>
-            <td><span class="priority-badge media">MEDIA</span></td>
-            <td><span class="impact-tag">Impacto TBD</span></td>
-            <td>Continuo</td>
-            <td>Savills Legal</td>
-            <td style="color:var(--green)">● Activo</td>
-          </tr>
-          <tr>
-            <td>Revisión contrato mantenimiento — vencimiento en 60 días</td>
-            <td><span class="priority-badge baja">BAJA</span></td>
-            <td><span class="impact-tag">−€15K/año potencial</span></td>
-            <td>60 días</td>
-            <td>Savills PM</td>
-            <td style="color:var(--muted)">● Planificado</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- PANEL: RISK -->
-  <div class="cr-panel" id="panel-risk">
-    <div class="kpi-strip">
-      <div class="kpi-box" style="--kpi-color:#EF4444"><div class="kpi-val">3.75</div><div class="kpi-lbl">Score global (P×I)</div></div>
-      <div class="kpi-box" style="--kpi-color:#F59E0B"><div class="kpi-val">2</div><div class="kpi-lbl">Riesgos críticos activos</div></div>
-      <div class="kpi-box" style="--kpi-color:#10B981"><div class="kpi-val">3</div><div class="kpi-lbl">Riesgos controlados</div></div>
-      <div class="kpi-box" style="--kpi-color:#60A5FA"><div class="kpi-val">6</div><div class="kpi-lbl">Mitigaciones activas</div></div>
-    </div>
-    <div class="cr-grid-2">
-      <div class="cr-card">
-        <div class="cr-card-title">Risk Horizon Map — Cobega I</div>
-        <div id="risk-rows"></div>
-      </div>
-      <div class="cr-card">
-        <div class="cr-card-title">Matriz de riesgo — Probabilidad vs Impacto</div>
-        <svg viewBox="0 0 300 280" style="width:100%;font-family:var(--font-mono)">
-          <!-- Grid -->
-          <line x1="40" y1="10" x2="40" y2="240" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <line x1="40" y1="240" x2="295" y2="240" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <!-- Grid lines -->
-          <line x1="40" y1="190" x2="295" y2="190" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="40" y1="140" x2="295" y2="140" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="40" y1="90" x2="295" y2="90" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="130" y1="10" x2="130" y2="240" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="210" y1="10" x2="210" y2="240" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="3,3"/>
-          <!-- Zone fills -->
-          <rect x="40" y="90" width="170" height="100" fill="rgba(245,158,11,0.04)" rx="0"/>
-          <rect x="40" y="10" width="170" height="80" fill="rgba(239,68,68,0.06)" rx="0"/>
-          <rect x="210" y="10" width="85" height="80" fill="rgba(239,68,68,0.08)" rx="0"/>
-          <!-- Axis labels -->
-          <text x="165" y="258" fill="#475569" font-size="8" text-anchor="middle">Probabilidad →</text>
-          <text x="16" y="130" fill="#475569" font-size="8" text-anchor="middle" transform="rotate(-90,16,130)">Impacto →</text>
-          <!-- Risk dots -->
-          <circle cx="220" cy="30" r="8" fill="rgba(239,68,68,0.8)"/>
-          <text x="232" y="34" fill="#EF4444" font-size="8">Legal</text>
-          <circle cx="175" cy="60" r="7" fill="rgba(245,158,11,0.8)"/>
-          <text x="186" y="64" fill="#F59E0B" font-size="8">Reputac.</text>
-          <circle cx="155" cy="90" r="7" fill="rgba(245,158,11,0.7)"/>
-          <text x="166" y="94" fill="#F59E0B" font-size="8">VAN</text>
-          <circle cx="140" cy="115" r="6" fill="rgba(245,158,11,0.6)"/>
-          <text x="150" y="119" fill="#F59E0B" font-size="8">Absorc.</text>
-          <circle cx="100" cy="150" r="6" fill="rgba(16,185,129,0.7)"/>
-          <text x="110" y="154" fill="#10B981" font-size="8">CCPP</text>
-          <circle cx="65" cy="200" r="5" fill="rgba(16,185,129,0.6)"/>
-          <text x="74" y="204" fill="#10B981" font-size="8">Operativo</text>
-          <!-- Zone labels -->
-          <text x="52" y="25" fill="rgba(239,68,68,0.4)" font-size="7">CRÍTICO</text>
-          <text x="52" y="115" fill="rgba(245,158,11,0.4)" font-size="7">ELEVADO</text>
-          <text x="52" y="210" fill="rgba(16,185,129,0.4)" font-size="7">GESTIONABLE</text>
-        </svg>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL: PIPELINE -->
-  <div class="cr-panel" id="panel-pipeline">
-    <div class="kpi-strip">
-      <div class="kpi-box" style="--kpi-color:#10B981"><div class="kpi-val">47</div><div class="kpi-lbl">Vendidas</div></div>
-      <div class="kpi-box" style="--kpi-color:#F59E0B"><div class="kpi-val">23</div><div class="kpi-lbl">En proceso</div></div>
-      <div class="kpi-box" style="--kpi-color:#60A5FA"><div class="kpi-val">132</div><div class="kpi-lbl">Disponibles</div></div>
-      <div class="kpi-box" style="--kpi-color:#EF4444"><div class="kpi-val">23</div><div class="kpi-lbl">Bloqueadas</div></div>
-    </div>
-    <div class="cr-grid-2">
-      <div class="cr-card">
-        <div class="cr-card-title">Curva de absorción — 3 escenarios</div>
-        <svg viewBox="0 0 340 200" style="width:100%">
-          <defs>
-            <marker id="arrowH" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto">
-              <path d="M0 0L6 3L0 6z" fill="rgba(255,255,255,0.2)"/>
-            </marker>
-          </defs>
-          <!-- Axes -->
-          <line x1="40" y1="10" x2="40" y2="175" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <line x1="40" y1="175" x2="335" y2="175" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <!-- Grid -->
-          <line x1="40" y1="50" x2="335" y2="50" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
-          <line x1="40" y1="90" x2="335" y2="90" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
-          <line x1="40" y1="130" x2="335" y2="130" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
-          <!-- Y labels -->
-          <text x="30" y="178" fill="#475569" font-size="7" text-anchor="end">0</text>
-          <text x="30" y="133" fill="#475569" font-size="7" text-anchor="end">75</text>
-          <text x="30" y="93" fill="#475569" font-size="7" text-anchor="end">150</text>
-          <text x="30" y="53" fill="#475569" font-size="7" text-anchor="end">225</text>
-          <!-- X labels -->
-          <text x="40" y="187" fill="#475569" font-size="7" text-anchor="middle">M0</text>
-          <text x="120" y="187" fill="#475569" font-size="7" text-anchor="middle">M12</text>
-          <text x="205" y="187" fill="#475569" font-size="7" text-anchor="middle">M24</text>
-          <text x="285" y="187" fill="#475569" font-size="7" text-anchor="middle">M36</text>
-          <!-- Optimista -->
-          <polyline points="40,175 80,150 120,118 160,85 200,50 240,50" fill="none" stroke="#10B981" stroke-width="1.5"/>
-          <!-- Base -->
-          <polyline points="40,175 80,159 120,135 160,108 200,80 250,50" fill="none" stroke="#2563EB" stroke-width="1.5"/>
-          <!-- Estresado -->
-          <polyline points="40,175 80,168 120,155 160,140 220,115 290,80 330,55" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,2"/>
-          <!-- Current position -->
-          <circle cx="93" cy="155" r="4" fill="#2563EB"/>
-          <line x1="93" y1="155" x2="93" y2="175" stroke="#2563EB" stroke-width="1" stroke-dasharray="2,2"/>
-          <text x="93" y="172" fill="#2563EB" font-size="6" text-anchor="middle">Hoy</text>
-          <!-- Legend -->
-          <rect x="170" y="15" width="8" height="2" fill="#10B981" rx="1"/>
-          <text x="182" y="19" fill="#10B981" font-size="7">Optimista (4.5u/mes)</text>
-          <rect x="170" y="25" width="8" height="2" fill="#2563EB" rx="1"/>
-          <text x="182" y="29" fill="#2563EB" font-size="7">Base (3.0u/mes)</text>
-          <rect x="170" y="35" width="8" height="2" fill="#EF4444" rx="1"/>
-          <text x="182" y="39" fill="#EF4444" font-size="7">Estresado (1.8u/mes)</text>
-        </svg>
-      </div>
-      <div class="cr-card">
-        <div class="cr-card-title">Ingresos acumulados estimados</div>
-        <svg viewBox="0 0 340 200" style="width:100%">
-          <!-- Stacked bars simplified -->
-          <text x="50" y="18" fill="#475569" font-size="8">€M</text>
-          <!-- Y axis -->
-          <line x1="40" y1="20" x2="40" y2="170" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <line x1="40" y1="170" x2="320" y2="170" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <!-- Bars by quarter -->
-          <g>
-            <rect x="55" y="130" width="30" height="40" fill="rgba(37,99,235,0.6)" rx="2"/>
-            <text x="70" y="145" fill="#fff" font-size="7" text-anchor="middle">€2.8M</text>
-            <text x="70" y="182" fill="#475569" font-size="7" text-anchor="middle">Q1</text>
-          </g>
-          <g>
-            <rect x="115" y="110" width="30" height="60" fill="rgba(37,99,235,0.7)" rx="2"/>
-            <text x="130" y="125" fill="#fff" font-size="7" text-anchor="middle">€4.3M</text>
-            <text x="130" y="182" fill="#475569" font-size="7" text-anchor="middle">Q2</text>
-          </g>
-          <g>
-            <rect x="175" y="85" width="30" height="85" fill="rgba(37,99,235,0.8)" rx="2"/>
-            <text x="190" y="100" fill="#fff" font-size="7" text-anchor="middle">€6.1M</text>
-            <text x="190" y="182" fill="#475569" font-size="7" text-anchor="middle">Q3</text>
-          </g>
-          <g>
-            <rect x="235" y="55" width="30" height="115" fill="rgba(37,99,235,0.9)" rx="2"/>
-            <text x="250" y="70" fill="#fff" font-size="7" text-anchor="middle">€8.2M</text>
-            <text x="250" y="182" fill="#475569" font-size="7" text-anchor="middle">Q4</text>
-          </g>
-          <!-- VAN line -->
-          <text x="165" y="48" fill="#10B981" font-size="7">VAN estimado: €38.4M</text>
-          <line x1="145" y1="50" x2="310" y2="50" stroke="#10B981" stroke-width="1" stroke-dasharray="3,3"/>
-        </svg>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL: TENANTS -->
-  <div class="cr-panel" id="panel-tenants">
-    <div class="kpi-strip">
-      <div class="kpi-box" style="--kpi-color:#60A5FA"><div class="kpi-val">202</div><div class="kpi-lbl">Inquilinos activos</div></div>
-      <div class="kpi-box" style="--kpi-color:#EF4444"><div class="kpi-val">23</div><div class="kpi-lbl">Con riesgo legal</div></div>
-      <div class="kpi-box" style="--kpi-color:#F59E0B"><div class="kpi-val">8</div><div class="kpi-lbl">Candidatos compra preferente</div></div>
-      <div class="kpi-box" style="--kpi-color:#10B981"><div class="kpi-val">47</div><div class="kpi-lbl">Ya vacías / vendidas</div></div>
-    </div>
-    <div class="cr-card">
-      <div class="cr-card-title">Mapa de unidades — 225 total</div>
-      <div class="tenant-grid" id="tenant-grid"></div>
-      <div class="pipe-legend" style="margin-top:16px">
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#10B981"></div>Vendida / vacía (47)</div>
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#2563EB"></div>Inquilino estable (132)</div>
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#F59E0B"></div>Candidato compra preferente (8)</div>
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#EF4444"></div>Riesgo legal (23)</div>
-        <div class="pipe-legend-item"><div class="pipe-dot" style="background:#8B5CF6"></div>En proceso venta (15)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL: ROADMAP -->
-  <div class="cr-panel" id="panel-roadmap">
-    <div class="cr-grid-2">
-      <div class="cr-card">
-        <div class="cr-card-title">Timeline de privatización</div>
-        <div class="timeline-wrap">
-          <div class="timeline-spine"></div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:#10B981;border-color:#060D1A"></div>
-            <div class="tl-phase">−48h · Completado</div>
-            <div class="tl-title">Documento "Lo que vemos en Cobega I"</div>
-            <div class="tl-desc">Análisis independiente de vulnerabilidades enviado a PATRIZIA antes de la reunión.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:#2563EB;border-color:#060D1A"></div>
-            <div class="tl-phase">Día 0 · En curso</div>
-            <div class="tl-title">Evento estratégico 90 min</div>
-            <div class="tl-desc">Stress Test + Demo Control Room + Co-diseño con PATRIZIA.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:#F59E0B;border-color:#060D1A"></div>
-            <div class="tl-phase">Día +3 · Planificado</div>
-            <div class="tl-title">Propuesta formal + Day 1 Plan</div>
-            <div class="tl-desc">20 páginas + Carta de Transparencia + Modelo financiero 3 escenarios.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:rgba(255,255,255,0.15);border-color:#060D1A"></div>
-            <div class="tl-phase">Mes 1 · Planificado</div>
-            <div class="tl-title">Activación ASSET SOVEREIGN™</div>
-            <div class="tl-desc">Knowledge Transfer Sprint 30 días. Control Room con datos reales. Primer reporting institucional.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:rgba(255,255,255,0.1);border-color:#060D1A"></div>
-            <div class="tl-phase">Mes 1-12 · Plan base</div>
-            <div class="tl-title">Fase 1 privatización — Salidas voluntarias</div>
-            <div class="tl-desc">Protocolo salida inquilinos. Oferta preferente. Primeras 60-80 ventas estimadas.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background:rgba(255,255,255,0.1);border-color:#060D1A"></div>
-            <div class="tl-phase">Mes 12-36 · Plan base</div>
-            <div class="tl-title">Fase 2 — Comercialización intensiva</div>
-            <div class="tl-desc">Gestión CCPP. Comercialización plena de unidades vacías. Objetivo: 225 unidades vendidas.</div>
-          </div>
-        </div>
-      </div>
-      <div class="cr-card">
-        <div class="cr-card-title">Compromisos ASSET SOVEREIGN™</div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div class="alert-item">
-            <div class="alert-icon-box g" style="background:rgba(16,185,129,0.1)">✓</div>
-            <div class="alert-body">
-              <div class="alert-title">Data Sovereignty desde día 1</div>
-              <div class="alert-desc">Todos los datos son de PATRIZIA. APIs abiertas. Exportación total en 48h si se solicita.</div>
-            </div>
-          </div>
-          <div class="alert-item">
-            <div class="alert-icon-box g" style="background:rgba(16,185,129,0.1)">✓</div>
-            <div class="alert-body">
-              <div class="alert-title">Open Book de proveedores</div>
-              <div class="alert-desc">Todos los contratos y márgenes visibles en tiempo real. Cero opacidad.</div>
-            </div>
-          </div>
-          <div class="alert-item">
-            <div class="alert-icon-box g" style="background:rgba(16,185,129,0.1)">✓</div>
-            <div class="alert-body">
-              <div class="alert-title">SLAs con devolución económica real</div>
-              <div class="alert-desc">Si los KPIs no se cumplen 2 trimestres consecutivos: devolución del 10% fee base.</div>
-            </div>
-          </div>
-          <div class="alert-item">
-            <div class="alert-icon-box g" style="background:rgba(16,185,129,0.1)">✓</div>
-            <div class="alert-body">
-              <div class="alert-title">Exit Protocol garantizado</div>
-              <div class="alert-desc">Preaviso 90 días. Transferencia de conocimiento incluida. Sin penalizaciones.</div>
-            </div>
-          </div>
-          <div class="alert-item">
-            <div class="alert-icon-box g" style="background:rgba(16,185,129,0.1)">✓</div>
-            <div class="alert-body">
-              <div class="alert-title">Honorarios alineados a resultados</div>
-              <div class="alert-desc">Componente variable ligado al plan de negocio. Si PATRIZIA gana más, Savills también.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ DOCUMENTOS ════════════════════════════════ -->
-<section id="docs">
-  <div class="sec-eyebrow reveal">Entregables del mandato</div>
-  <h2 class="sec-title reveal reveal-d1">Cuatro documentos.<br>Una sola <span style="color:var(--gold)">posición.</span></h2>
-  <div class="docs-grid">
-    <a href="ASSET_SOVEREIGN_Patrizia.pptx" download class="doc-card reveal" style="--doc-color:#2563EB;--doc-bg:rgba(37,99,235,0.1)">
-      <div class="doc-icon">📊</div>
-      <div class="doc-type">Presentación · 15 slides</div>
-      <div class="doc-name">ASSET SOVEREIGN™</div>
-      <p class="doc-desc">Presentación ejecutiva completa. Control Room, cinco pilares, WOW Moment, manifiesto, propuesta comercial y roadmap.</p>
-      <div class="doc-download">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4 7l4 4 4-4M2 13h12"/></svg>
-        Descargar .pptx
-      </div>
-    </a>
-    <a href="Cobega_StressTest.docx" download class="doc-card reveal reveal-d1" style="--doc-color:#EF4444;--doc-bg:rgba(239,68,68,0.08)">
-      <div class="doc-icon">🔍</div>
-      <div class="doc-type">Documento previo · −48h</div>
-      <div class="doc-name">Stress Test Cobega I</div>
-      <p class="doc-desc">"Lo que vemos en Cobega I." Las tres vulnerabilidades reales con datos, impacto financiero y mitigación propuesta. El documento que diferencia antes de la reunión.</p>
-      <div class="doc-download">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4 7l4 4 4-4M2 13h12"/></svg>
-        Descargar .docx
-      </div>
-    </a>
-    <a href="Carta_Transparencia_PATRIZIA.docx" download class="doc-card reveal reveal-d2" style="--doc-color:#10B981;--doc-bg:rgba(16,185,129,0.08)">
-      <div class="doc-icon">✍</div>
-      <div class="doc-type">Pre-contractual · Firmable</div>
-      <div class="doc-name">Carta de Transparencia</div>
-      <p class="doc-desc">16 compromisos firmables en cuatro bloques: datos, proveedores, honorarios y protocolo de salida. El documento que ningún competidor entrega voluntariamente.</p>
-      <div class="doc-download">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4 7l4 4 4-4M2 13h12"/></svg>
-        Descargar .docx
-      </div>
-    </a>
-    <a href="Modelo_Financiero_PATRIZIA.xlsx" download class="doc-card reveal reveal-d3" style="--doc-color:#10B981;--doc-bg:rgba(16,185,129,0.06)">
-      <div class="doc-icon">📈</div>
-      <div class="doc-type">Modelo financiero · 5 hojas</div>
-      <div class="doc-name">Modelo de Escenarios</div>
-      <p class="doc-desc">Tres escenarios de privatización (base / optimista / estresado), Timeline de ventas mensual, Risk Horizon con score P×I, y Modelo de Honorarios con Open Book.</p>
-      <div class="doc-download">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4 7l4 4 4-4M2 13h12"/></svg>
-        Descargar .xlsx
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ══ FINAL ═══════════════════════════════════════ -->
-<section id="final">
-  <div class="final-glow"></div>
-  <div class="final-inner">
-    <span class="final-eyebrow reveal">El siguiente paso</span>
-    <div class="final-divider reveal"></div>
-    <h2 class="final-title reveal">
-      No pedimos<br>la adjudicación.<br>
-      <span style="color:var(--gold)">Pedimos la conversación.</span>
+  <div class="mf-body">
+    <div class="mf-eyebrow reveal">El fin del PM tradicional</div>
+    <h2 class="sec-title reveal d1">
+      El Property<br>Management<br><em>está roto.</em>
     </h2>
-    <p class="final-sub reveal reveal-d1">
-      El primer entregable es gratuito. Así de seguros estamos de lo que vamos a encontrar.
-    </p>
-    <div class="final-cta reveal reveal-d2">
-      <a href="#hero" class="btn-primary" onclick="event.preventDefault();scrollTo('hero')">
-        <span>↑</span> Volver al inicio
-      </a>
-      <a href="#controlroom" class="btn-ghost" onclick="event.preventDefault();scrollTo('controlroom')">
-        Control Room →
-      </a>
+    <div class="pq reveal d2">
+      <p>«Recibir un PDF mensual con las incidencias del edificio no es información. Es ruido.»</p>
+    </div>
+
+    <div class="pains">
+      <div class="pain reveal">
+        <div class="p-idx">01</div>
+        <span class="p-tag">El reconocido</span>
+        <h3 class="pain-head">El abismo de los datos</h3>
+        <p class="p-body">Sus LPs exigen datos institucionales en tiempo real. Los gestores locales producen informes operativos. El abismo entre ambos se llena con Excel. Decisiones de inversión tomadas sin datos reales del activo.</p>
+        <button class="p-link">Ver solución →</button>
+      </div>
+      <div class="pain reveal d1">
+        <div class="p-idx">02</div>
+        <span class="p-tag">El complejo</span>
+        <h3 class="pain-head">Nadie gestiona la transición</h3>
+        <p class="p-body">La transición BTR→BTS con 225 inquilinos al 90% exige coordinación legal, comercial, comunicacional y de comunidad. El PM tradicional solo gestiona la operación. Nadie gestiona la transición completa.</p>
+        <button class="p-link">Ver solución →</button>
+      </div>
+      <div class="pain urg reveal d2">
+        <div class="p-idx">03</div>
+        <span class="p-tag">El no dicho</span>
+        <h3 class="pain-head">El riesgo que nadie nombra</h3>
+        <p class="p-body">Ley de Vivienda 12/2023 + regulación catalana + presión mediática. La privatización en Barcelona tiene riesgo legal, reputacional y de comunidad activo. El primero que lo nombra gana la credibilidad.</p>
+        <button class="p-link">Ver solución →</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">ASSET SOVEREIGN™ · Savills × PATRIZIA</div>
-  <div class="footer-meta">Cobega I · Área Metropolitana de Barcelona · Julio 2026 · Confidencial</div>
+<!-- CIERRE FOTO + TEXTO -->
+<div class="foto-manifesto">
+  <div class="fm-img">
+    <img
+      src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85&auto=format&fit=crop&crop=center"
+      alt="Edificio residencial vista exterior nocturna"
+      loading="lazy"
+    />
+  </div>
+  <div class="fm-txt">
+    <div class="fm-eyebrow reveal">— 03 — Asset Sovereign™</div>
+    <h2 class="fm-title reveal d1">
+      No vendemos<br><em>gestión.</em><br>Vendemos control.
+    </h2>
+    <p class="fm-body reveal d2">Un gestor institucional no debería depender de su Property Manager para tomar decisiones. Debería tener el mismo nivel de control que un fondo soberano sobre su cartera de inversiones.</p>
+    <a href="#pilares" class="cta-p reveal d3" style="align-self:flex-start">→ Ver los cinco pilares</a>
+  </div>
+</div>
+
+<footer class="ad-footer">
+  <span class="fc">Savills Spain · Propuesta confidencial · 2026</span>
+  <span class="fc">Sistema de Gobernanza Inmobiliaria Institucional</span>
 </footer>
 
-</div><!-- /main -->
-
 <script>
-// ─── CURSOR ─────────────────────────────────────────
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX; my=e.clientY;
-  cur.style.left=mx+'px'; cur.style.top=my+'px';
-});
-function animateRing(){
-  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
-
-// ─── SPINE PROGRESS ─────────────────────────────────
-const spine = document.getElementById('spine');
-window.addEventListener('scroll',()=>{
-  const pct = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100).toFixed(1);
-  spine.style.background=`linear-gradient(to bottom,transparent 0%,var(--gold) ${pct}%,rgba(245,158,11,0.08) 100%)`;
-  updateNav();
-});
-
-// ─── NAV ────────────────────────────────────────────
-const sections = ['hero','manifesto','pillars','controlroom','docs','final'];
-const dots = document.querySelectorAll('.nav-dot');
-function updateNav(){
-  const sy = window.scrollY+window.innerHeight/2;
-  sections.forEach((id,i)=>{
-    const el=document.getElementById(id);
-    if(!el) return;
-    const {top,bottom}=el.getBoundingClientRect();
-    const abs=top+window.scrollY;
-    dots[i].classList.toggle('active', sy>=abs && sy<abs+el.offsetHeight);
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
   });
-}
-function scrollTo(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-updateNav();
-
-// ─── CLOCK ──────────────────────────────────────────
-function updateClock(){
-  const now=new Date();
-  document.getElementById('cr-clock').textContent=
-    now.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-}
-setInterval(updateClock,1000);
-updateClock();
-
-// ─── CR TABS ────────────────────────────────────────
-function crTab(btn,panel){
-  document.querySelectorAll('.cr-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.cr-panel').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('panel-'+panel).classList.add('active');
-  if(panel==='risk') initRiskBars();
-  if(panel==='tenants') initTenantGrid();
-}
-
-// ─── RISK BARS ──────────────────────────────────────
-const risks = [
-  {name:'Legal / Regulatorio', pct:75, color:'#EF4444', badge:'CRÍTICO', bc:'rgba(239,68,68,0.15)', fc:'#EF4444'},
-  {name:'Reputacional',         pct:60, color:'#F59E0B', badge:'ELEVADO', bc:'rgba(245,158,11,0.12)', fc:'#F59E0B'},
-  {name:'Desviación VAN',       pct:50, color:'#F59E0B', badge:'ELEVADO', bc:'rgba(245,158,11,0.12)', fc:'#F59E0B'},
-  {name:'Mercado / Absorción',  pct:45, color:'#F59E0B', badge:'ELEVADO', bc:'rgba(245,158,11,0.12)', fc:'#F59E0B'},
-  {name:'Comunidad CCPP',       pct:35, color:'#10B981', badge:'GESTION.', bc:'rgba(16,185,129,0.1)', fc:'#10B981'},
-  {name:'Operativo',            pct:15, color:'#10B981', badge:'BAJO', bc:'rgba(16,185,129,0.1)', fc:'#10B981'},
-];
-let riskInit=false;
-function initRiskBars(){
-  if(riskInit) return;
-  riskInit=true;
-  const container=document.getElementById('risk-rows');
-  container.innerHTML='';
-  risks.forEach(r=>{
-    const row=document.createElement('div');
-    row.className='risk-row';
-    row.innerHTML=`
-      <div class="risk-name">${r.name}</div>
-      <div class="risk-track"><div class="risk-fill" style="width:0%;background:${r.color}" data-pct="${r.pct}"></div></div>
-      <div class="risk-pct" style="color:${r.color}">${r.pct}%</div>
-      <div class="risk-badge" style="background:${r.bc};color:${r.fc};border:1px solid ${r.fc}33">${r.badge}</div>
-    `;
-    container.appendChild(row);
-  });
-  setTimeout(()=>{
-    document.querySelectorAll('.risk-fill').forEach(b=>{
-      b.style.width=b.dataset.pct+'%';
-    });
-  },100);
-}
-
-// ─── TENANT GRID ────────────────────────────────────
-function initTenantGrid(){
-  const g=document.getElementById('tenant-grid');
-  if(g.children.length>0) return;
-  const types=[
-    {color:'#10B981',count:47,label:'Vendida'},
-    {color:'#EF4444',count:23,label:'Riesgo legal'},
-    {color:'#F59E0B',count:8,label:'Compra preferente'},
-    {color:'#8B5CF6',count:15,label:'En proceso venta'},
-    {color:'#2563EB',count:132,label:'Inquilino estable'},
-  ];
-  const cells=[];
-  types.forEach(t=>{
-    for(let i=0;i<t.count;i++) cells.push({color:t.color,label:t.label});
-  });
-  // shuffle
-  for(let i=cells.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [cells[i],cells[j]]=[cells[j],cells[i]];
-  }
-  cells.forEach((c,i)=>{
-    const el=document.createElement('div');
-    el.className='tenant-cell';
-    el.style.background=c.color;
-    el.style.opacity='0.75';
-    el.title=`Unidad ${i+1} — ${c.label}`;
-    el.addEventListener('mouseenter',()=>{ el.style.opacity='1'; });
-    el.addEventListener('mouseleave',()=>{ el.style.opacity='0.75'; });
-    g.appendChild(el);
-  });
-}
-
-// ─── SCROLL REVEAL ──────────────────────────────────
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('in');
-  });
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// ─── KPI COUNTER ANIMATION ──────────────────────────
-function animateKPI(el, target, suffix='', decimals=0){
-  let start=0, dur=2000, startTime=null;
-  function step(ts){
-    if(!startTime) startTime=ts;
-    const prog=Math.min((ts-startTime)/dur,1);
-    const ease=1-Math.pow(1-prog,3);
-    const val=start+(target-start)*ease;
-    el.textContent=(decimals>0?val.toFixed(decimals):Math.round(val))+suffix;
-    if(prog<1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-// Trigger KPI animations when control room enters view
-const crSection=document.getElementById('controlroom');
-const crIO=new IntersectionObserver(entries=>{
-  if(entries[0].isIntersecting){
-    setTimeout(()=>{
-      animateKPI(document.querySelector('#kpi-occ')?.closest('.kpi-box')?.querySelector('.kpi-val') || {textContent:''}, 89,'%');
-    },300);
-    crIO.disconnect();
-  }
-},{threshold:0.2});
-crIO.observe(crSection);
-
-// Initialize risk bars if panel is already visible
-initRiskBars();
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
